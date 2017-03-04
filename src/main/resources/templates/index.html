@@ -1,0 +1,49 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title>Otsikko</title>
+        <meta charset="utf-8" />
+    </head>
+
+    <body>
+        <h1>Aiheet</h1>
+
+        <p>Kaikki aiheet:</p>
+        <table>
+            <tr>
+                <th>Aiheen nimi:</th>
+                <th>Viestejä:</th>
+                <th>Viimeisin viesti:</th>
+            </tr>
+            <p th:each="a : ${aiheOliot}">
+                <tr>
+                    <td><a th:href="@{~/aihe/{id}(id=${a.id})}" 
+                           th:text="${a.aiheenNimi}">Aiheen nimi</a></td>
+                    <td><span th:text="${a.viesteja}">Viestejä</span></td>
+                    <td><span th:text="${a.viimeisinViesti}">Viimeisin viesti</span></td>
+                </tr>
+            </p>
+        </table>
+        <p> Lisää uusi aihe: </p>
+        <form id="contact-form" method="post">
+            <input type="hidden" name="redirect" value="http://www.opera.com" />
+            <ul>
+                <li>
+                    <label for="aihe">Aiheen nimi:</label>
+                    <input type="text" name="aihe" id="aihe" value="" />
+                </li>
+                <li>
+                    <label for="nm">Nimimerkki:</label>
+                    <input type="text" name="nimi" id="nm" value="" />
+                </li>
+
+                <li>
+                    <input type="submit" value="Lisää!" />
+                </li>
+            </ul>
+        </form>
+
+
+    </body>
+</html>

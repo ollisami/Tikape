@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Keskustelut</title>
+        <meta charset="utf-8" />
+    </head>
+
+    <body>
+        <h1>Keskustelut</h1>
+        <table>
+            <tr>
+                <th>Keskustelun nimi:</th>
+                <th>Viestejä:</th>
+                <th>Viimeisin viesti:</th>
+            </tr>
+            <p th:each="keskustelu : ${keskustelut}">
+            <tr>
+                <td><a th:href="@{~/keskustelu/{id}(id=${keskustelu.id})}" 
+                       th:text="${keskustelu.keskustelunNimi}">Keskustelun nimi</a></td>
+                <td><span th:text="${keskustelu.viesteja}">Viestejä</span></td>
+                <td><span th:text="${keskustelu.viimeisinViesti}">Viimeisin viesti</span></td>
+            </tr>
+        </p>
+    </table>
+    <p> Lisää uusi aihe: </p>
+    <form id="contact-form" method="post">
+        <input type="hidden" name="redirect" value="http://www.opera.com" />
+        <ul>
+            <li>
+                <label for="keskustelu">Keskustelun nimi:</label>
+                <input type="text" name="keskustelu" id="keskustelu" value="" />
+            </li>
+            <li>
+                <label for="nm">Nimimerkki:</label>
+                <input type="text" name="nimi" id="nm" value="" />
+            </li>
+            
+            <li>
+                <input type="submit" value="Lisää!" />
+            </li>
+        </ul>
+    </form>
+
+    <p></p><a href="javascript:history.back()">Takaisin</a>
+</body>
+</html>

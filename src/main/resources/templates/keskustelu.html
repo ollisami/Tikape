@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Viestit</title>
+        <meta charset="utf-8" />
+    </head>
+
+    <body>
+        <h1>Viestit:</h1>
+        <table border="1">
+            <tr>
+                <th>Viesti:</th>
+                <th>Kirjoittaja</th>
+                <th>Aika:</th>
+            </tr>
+            <ul>
+                <p th:each="viesti : ${viestit}">
+                <tr>
+                    <td><span th:text="${viesti.sisalto}"> viesti</span></td>
+                    <td><span th:text="${viesti.kirjoittaja}"> kirjoittaja</span></td>
+                    <td><span th:text="${viesti.aika}"> aika</span></td>
+                </tr>
+                </p>
+            </ul>
+        </table>
+        <form id="contact-form" method="post">
+            <input type="hidden" name="redirect" value="http://www.opera.com" />
+            <ul>
+
+                <li>
+                    <label for="comments">Comments:</label>
+                    <textarea name="viesti" id="comments" cols="25" rows="3"></textarea>
+                </li>
+                <li>
+                    <label for="email">Nimimerkki:</label>
+                    <input type="text" name="nimi" id="email" value="" />
+                </li>
+                <li>
+                    <input type="submit" value="Lisää!" />
+                </li>
+            </ul>
+        </form>
+
+        <p></p><a href="javascript:history.back()">Takaisin</a>
+    </body>
+</html>

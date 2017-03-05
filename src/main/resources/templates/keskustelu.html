@@ -28,22 +28,14 @@ and open the template in the editor.
                 </p>
             </ul>
         </table>
+        <p> Lisää uusi viesti: </p>
         <form id="contact-form" method="post">
             <input type="hidden" name="redirect" value="http://www.opera.com" />
-            <ul>
-
-                <li>
-                    <label for="comments">Comments:</label>
-                    <textarea name="viesti" id="comments" cols="25" rows="3"></textarea>
-                </li>
-                <li>
-                    <label for="email">Nimimerkki:</label>
-                    <input type="text" name="nimi" id="email" value="" />
-                </li>
-                <li>
-                    <input type="submit" value="Lisää!" />
-                </li>
-            </ul>
+            <p><label for="comments">Viesti:</label>
+                <textarea name="viesti" id="comments" cols="25" rows="3"></textarea></p>
+            <p><label for="email">Nimimerkki:</label>
+                <input type="text" name="nimi" id="email" value="" /></p>
+            <input type="submit" value="Lisää!" />
         </form>
 
         <p></p><a href="javascript:history.back()">Takaisin</a>

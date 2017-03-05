@@ -27,23 +27,14 @@ and open the template in the editor.
             </tr>
         </p>
     </table>
-    <p> Lisää uusi aihe: </p>
+    <p> Lisää uusi keskustelu: </p>
     <form id="contact-form" method="post">
         <input type="hidden" name="redirect" value="http://www.opera.com" />
-        <ul>
-            <li>
-                <label for="keskustelu">Keskustelun nimi:</label>
-                <input type="text" name="keskustelu" id="keskustelu" value="" />
-            </li>
-            <li>
-                <label for="nm">Nimimerkki:</label>
-                <input type="text" name="nimi" id="nm" value="" />
-            </li>
-            
-            <li>
-                <input type="submit" value="Lisää!" />
-            </li>
-        </ul>
+        <p><label for="keskustelu">Keskustelun nimi:</label>
+            <input type="text" name="keskustelu" id="keskustelu" value="" /></p>
+        <p> <label for="nm">Nimimerkki:</label>
+            <input type="text" name="nimi" id="nm" value="" /></p>
+        <input type="submit" value="Lisää!" />
     </form>
 
     <p></p><a href="javascript:history.back()">Takaisin</a>

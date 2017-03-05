@@ -62,8 +62,10 @@ public class Main {
         }, new ThymeleafTemplateEngine());
 
         post("/", (req, res) -> {
-            aiheDao.lisaa(req.queryParams("aihe"), req.queryParams("nimi"));
-            res.redirect("/");
+            if (!req.queryParams("aihe").isEmpty() && !req.queryParams("nimi").isEmpty()) {
+                aiheDao.lisaa(req.queryParams("aihe"), req.queryParams("nimi"));
+            }
+            res.redirect(req.pathInfo());
             return "ok";
         });
 
@@ -81,16 +83,14 @@ public class Main {
             return new ModelAndView(map, "viestit");
         }, new ThymeleafTemplateEngine());
         /*
-        get("/aihe", (req, res) -> {
-            HashMap map = new HashMap<>();
-            map.put("aiheet", aiheDao.findAll());
+         get("/aihe", (req, res) -> {
+         HashMap map = new HashMap<>();
+         map.put("aiheet", aiheDao.findAll());
 
-            return new ModelAndView(map, "aihe");
-        }, new ThymeleafTemplateEngine());
+         return new ModelAndView(map, "aihe");
+         }, new ThymeleafTemplateEngine());
          */
         get("/aihe/:id", (req, res) -> {
-            System.out.println(req.params("id"));
-            System.out.println("HAAAAAAAAAAAAAA");
             HashMap map = new HashMap<>();
             List<Keskustelu> keskustelut = keskusteluDao.findAllWithAiheId(Integer.parseInt(req.params("id")));
             for (Keskustelu k : keskustelut) {
@@ -110,15 +110,16 @@ public class Main {
                     k.setViimeisinViesti(uusin.getAika());
                 }
             }
-            
+
             map.put("keskustelut", keskustelut);
 
             return new ModelAndView(map, "aihe");
         }, new ThymeleafTemplateEngine());
         post("/aihe/:id", (req, res) -> {
+            if (!req.queryParams("keskustelu").isEmpty() && !req.queryParams("nimi").isEmpty()) {
             keskusteluDao.lisaa(req.queryParams("keskustelu"), req.queryParams("nimi"), Integer.parseInt(req.params("id")));
-            
-            res.redirect("/");
+            }
+            res.redirect(req.pathInfo());
             return "ok";
         });
 
@@ -131,9 +132,10 @@ public class Main {
             return new ModelAndView(map, "keskustelu");
         }, new ThymeleafTemplateEngine());
         post("/keskustelu/:id", (req, res) -> {
+            if (!req.queryParams("viesti").isEmpty() && !req.queryParams("nimi").isEmpty()) {
             viestiDao.lisaa(req.queryParams("viesti"), req.queryParams("nimi"), Integer.parseInt(req.params("id")));
-            
-            res.redirect("/");
+            }
+            res.redirect(req.pathInfo());
             return "ok";
         });
 
